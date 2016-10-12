@@ -2,11 +2,10 @@ import java.util.Random;
 
 public class EntryPoint {
     public static void main(String[] args) {
-        BinaryTree<Integer> bst = new BinaryTree<Integer>();
         int[] elementCountToTest = new int[] {10000, 100000, 1000000};
         for (int i = 0; i < elementCountToTest.length; i++) {
             int elementCountToInsert = elementCountToTest[i];
-            double bstMedianHeight = getBstMedianHeight(bst, elementCountToInsert);
+            double bstMedianHeight = getBstMedianHeight(elementCountToInsert);
             System.out.println("element count: " + elementCountToInsert);
             System.out.println(bstMedianHeight);
             System.out.println(2.99 * Math.log(elementCountToInsert));
@@ -15,10 +14,11 @@ public class EntryPoint {
         }
     }
 
-    private static double getBstMedianHeight(BinaryTree<Integer> bst, int elementCountToInsert) {
+    private static double getBstMedianHeight(int elementCountToInsert) {
         Random rnd = new Random(0);
         double bstMedianHeight = 0;
         for (int i = 0; i < 100; i++) {
+            BinaryTree<Integer> bst = new BinaryTree<Integer>();
             for (int j = 0; j < elementCountToInsert; j++) {
                 bst.add(rnd.nextInt());
             }
